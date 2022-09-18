@@ -30,3 +30,9 @@
 *.exe
 *.out
 *.app
+
+
+#spbu:')
+*.user
+Debug
+.vs
