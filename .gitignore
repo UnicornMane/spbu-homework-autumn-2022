@@ -32,7 +32,12 @@
 *.app
 
 
-#spbu:')
+#spbu
 *.user
 Debug
 .vs
+
+#CLion
+cmake-build-debug
+.idea
+.DS_STORE
