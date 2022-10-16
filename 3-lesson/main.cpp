@@ -153,7 +153,6 @@ std::ostream &operator << (std::ostream& out, const q<T> &a)
 
 int main(int argc, char* argv[])
 {
-
     q<int> a(1, 2, 5, 4);
     q<int> b(1, 2, 3, 4);
     cout << "a: " << a << endl << "b: " << b << endl;
