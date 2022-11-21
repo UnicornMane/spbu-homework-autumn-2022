@@ -35,6 +35,16 @@ public:
         m_size = n;
         m_data = new any[n];
     }
+    selfVector(int n, any t)
+    {
+        m_size = n;
+        m_data = new any[n];
+        for (int i = 0; i < n; ++i)
+        {
+            m_data[i] = t;
+        }
+    }
+    
     ~selfVector()
     {
         if (m_data)
