@@ -17,25 +17,25 @@ any maxF(any f, any s)
 }
 
 template<typename any>
-class dynamic_array
+class selfVector
 {
 private:
     int m_size;
     int m_capacity;
     any* m_data;
 public:
-    dynamic_array()
+    selfVector()
     {
         m_size = 0;
         m_capacity = 0;
         m_data = nullptr;
     }
-    dynamic_array(int n)
+    selfVector(int n)
     {
         m_size = n;
         m_data = new any[n];
     }
-    ~dynamic_array()
+    ~selfVector()
     {
         if (m_data)
             delete[] m_data;
@@ -90,9 +90,9 @@ public:
 
 };
 
-//void dynamic_array::max(dynamic_array& a)
+
 template <typename any>
-any max(dynamic_array<any>& a)
+any max(selfVector<any>& a)
 {
     int tmp = a[0];
     for (int i = 1; i < a.size(); ++i)
@@ -104,7 +104,7 @@ any max(dynamic_array<any>& a)
 }
 
 template<typename T>
-void sort(dynamic_array<T>& a)
+void sort(selfVector<T>& a)
 {
     for (int i = a.size(); i > 0; --i)
         for (int j = 1; j < i; ++j)
@@ -113,7 +113,7 @@ void sort(dynamic_array<T>& a)
 }
 
 template <typename any>
-std::ostream &operator << (std::ostream& out, dynamic_array<any>& a)
+std::ostream &operator << (std::ostream& out, selfVector<any>& a)
 {
     for (int i = 0; i < a.size(); ++i)
     {
@@ -124,7 +124,7 @@ std::ostream &operator << (std::ostream& out, dynamic_array<any>& a)
 }
 
 template <typename any>
-dynamic_array<any>& operator + (dynamic_array<any>& a, dynamic_array<any>& b)
+selfVector<any>& operator + (selfVector<any>& a, selfVector<any>& b)
 {
     int tmp = a.size();
     a.resize(a.size() + b.size());
@@ -139,7 +139,7 @@ dynamic_array<any>& operator + (dynamic_array<any>& a, dynamic_array<any>& b)
 }
 
 template <typename T>
-class Stack : public dynamic_array<T>
+class Stack : public selfVector<T>
 {
 public:
     void push(T val)
