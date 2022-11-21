@@ -138,30 +138,6 @@ dynamic_array<any>& operator + (dynamic_array<any>& a, dynamic_array<any>& b)
     return a;
 }
 
-template <typename T>
-class Stack : public dynamic_array<T>
-{
-public:
-    void push(T val)
-    {
-        this->push_back(val);
-    }
-
-    T top()
-    {
-        return (*this)[this->size() - 1];
-    }
-
-    void pop()
-    {
-        this->resize(this->size() - 1);
-    }
-
-    bool empty()
-    {
-        return this->size() == 0;
-    }
-
 };
 
 int main()
