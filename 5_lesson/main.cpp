@@ -176,5 +176,15 @@ public:
 
 int main()
 {
-    
+    selfVector<int> f;
+    for (int i = 0; i < 4; ++i)
+    {
+        int tmp = 0;
+        std::cin >> tmp;
+        f.push_back(tmp);
+    }
+    for (int i = 0; i < 4; ++i)
+    {
+        std::cout << f[i] << " ";
+    }
 }

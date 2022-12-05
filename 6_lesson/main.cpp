@@ -9,20 +9,16 @@ int main(int argc, char  *argv[])
     try
     {
         std::fstream fs;
-        fs.open("//Users//mi//Documents//txts//true.txt", std::fstream::in | std::fstream::out | std::fstream::app);
+        fs.open("//Users//mi//Documents/", std::fstream::in | std::fstream::out | std::fstream::app);
         if (!fs.is_open())
         {
-            throw std::fstream::failure("Unable to run true.txt");
+            throw std::fstream::failure("Unable to run .txt");
         }
-        if()
+
     }
     catch(std::exception &ex)
     {
-        if (typeid(ex) == typeid(std::underflow_error))
-        {
-            std::cout << ex.what() << std::endl;
-        }
-        else if (typeid(ex) == typeid(std::ifstream::failure))
+        if (typeid(ex) == typeid(std::ifstream::failure))
         {
             std::cout << ex.what();
         }

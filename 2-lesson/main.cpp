@@ -37,8 +37,7 @@ public:
     }
     ~dynamic_array()
     {
-        if (m_data)
-            delete[] m_data;
+        delete[] m_data;
     }
 
     int size()
@@ -137,8 +136,6 @@ dynamic_array<any>& operator + (dynamic_array<any>& a, dynamic_array<any>& b)
     }
     return a;
 }
-
-};
 
 int main()
 {
