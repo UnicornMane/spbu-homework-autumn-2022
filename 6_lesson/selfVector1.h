@@ -34,19 +34,19 @@ public:
     }
     selfVector(int n)
     {
-//        if (n < 0)
-//        {
-//            throw std::length_error("vector size can't be less than zero!!\n");
-//        }
+        if (n < 0)
+        {
+            throw std::length_error("vector size can't be less than zero!!\n");
+        }
         m_size = n;
         m_data = new any[n];
     }
     selfVector(int n, any t)
     {
-//        if (n < 0)
-//        {
-//            throw std::length_error("vector size can't be less than zero!!\n");
-//        }
+        if (n < 0)
+        {
+            throw std::length_error("vector size can't be less than zero!!\n");
+        }
         m_size = n;
         m_data = new any[n];
         for (int i = 0; i < n; ++i)
@@ -71,10 +71,10 @@ public:
 
     any& operator[] (int i)
     {
-//        if (i >= m_size)
-//        {
-//            throw std::out_of_range("out_of_range!!\n");
-//        }
+        if (i >= m_size)
+        {
+            throw std::out_of_range("out_of_range!!\n");
+        }
         return m_data[i];
     }
 
@@ -86,10 +86,10 @@ public:
             return;
         }
 
-//        if ((long long)2*m_size > std::numeric_limits<int>::max())
-//        {
-//            throw std::bad_alloc("you can't make size of vector bigger than (2<<31 - 1)\n");
-//        }
+        if ((long long)2*m_size > std::numeric_limits<int>::max())
+        {
+            throw std::bad_alloc("you can't make size of vector bigger than (2<<31 - 1)\n");
+        }
         int newcapacity = maxF(newsize, m_size * 2);
         any* new_data = new any[newcapacity];
         int i = 0;
@@ -124,10 +124,10 @@ public:
         int s = 0;
         for (int i = 0; i < m_size; ++i)
         {
-//            if (s + m_data[i] > std::numeric_limits<int>::max())
-//            {
-//                throw std::overflow_error("the sum of elements is bigger than INT_MAX\n");
-//            }
+            if (s + m_data[i] > std::numeric_limits<int>::max())
+            {
+                throw std::overflow_error("the sum of elements is bigger than INT_MAX\n");
+            }
             s += m_data[i];
         }
         return s;
@@ -135,10 +135,10 @@ public:
 
     void invert_element(int ind)
     {
-//        if (m_data[ind] == 0)
-//        {
-//            throw std::underflow_error("you will get +-inf element\n");
-//        }
+        if (m_data[ind] == 0)
+        {
+            throw std::underflow_error("you will get +-inf element\n");
+        }
         m_data[ind] = 1 / m_data[ind];
     }
 };
