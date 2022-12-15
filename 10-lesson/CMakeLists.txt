@@ -3,4 +3,4 @@ project(10_lesson)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(10_lesson main.cpp)
+add_executable(10_lesson dictionary.txt main.cpp)
