@@ -90,7 +90,6 @@ int main()
         if (tmp == 'n')
         {
             flag = false;
-            system("clear");
         }
     }
 }
