@@ -91,9 +91,10 @@ int main()
 
     mixer->setNextObject(fryingPan)->setNextObject(teapot);
 
+
+    giveCommand(mixer, "boil water");
     giveCommand(mixer, "make a smoothie");
     giveCommand(mixer, "fry potatoes");
-    giveCommand(mixer, "boil water");
 
     giveCommand(mixer, "squish a cat");
     return 0;

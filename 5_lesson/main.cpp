@@ -47,7 +47,6 @@ public:
     
     ~selfVector()
     {
-        if (m_data)
             delete[] m_data;
     }
 

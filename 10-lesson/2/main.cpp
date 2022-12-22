@@ -87,7 +87,7 @@ int main()
         cout << "do you want to continue?: (y/n)";
         char tmp;
         cin >> tmp;
-        if (tmp == 'n')
+        if (tmp != 'y')
         {
             flag = false;
         }

@@ -1,6 +1,4 @@
 #include <iostream>
-#include <exception>
-#include <limits>
 
 template<typename any>
 any min(any f, any s)
@@ -34,19 +32,11 @@ public:
     }
     selfVector(int n)
     {
-        if (n < 0)
-        {
-            throw std::length_error("vector size can't be less than zero!!\n");
-        }
         m_size = n;
         m_data = new any[n];
     }
     selfVector(int n, any t)
     {
-        if (n < 0)
-        {
-            throw std::length_error("vector size can't be less than zero!!\n");
-        }
         m_size = n;
         m_data = new any[n];
         for (int i = 0; i < n; ++i)
@@ -54,14 +44,10 @@ public:
             m_data[i] = t;
         }
     }
+
     ~selfVector()
     {
-        delete[] m_data;
-    }
-
-    int capacity()
-    {
-        return m_capacity;
+            delete[] m_data;
     }
 
     int size()
@@ -71,10 +57,6 @@ public:
 
     any& operator[] (int i)
     {
-        if (i >= m_size)
-        {
-            throw std::out_of_range("out_of_range!!\n");
-        }
         return m_data[i];
     }
 
@@ -86,14 +68,10 @@ public:
             return;
         }
 
-        if ((long long)2*m_size > std::numeric_limits<int>::max())
-        {
-            throw std::bad_alloc();
-        }
         int newcapacity = maxF(newsize, m_size * 2);
         any* new_data = new any[newcapacity];
-        int i = 0;
-        for (; i < min(m_size, newsize); ++i)
+        int i;
+        for (i = 0; i < min(m_size, newsize); ++i)
             new_data[i] = m_data[i];
         for (; i < newsize; ++i)
             new_data[i] = any();
@@ -119,28 +97,6 @@ public:
         m_data[pos] = val;
     }
 
-    int sum()
-    {
-        int s = 0;
-        for (int i = 0; i < m_size; ++i)
-        {
-            if (s + m_data[i] > std::numeric_limits<int>::max())
-            {
-                throw std::overflow_error("the sum of elements is bigger than INT_MAX\n");
-            }
-            s += m_data[i];
-        }
-        return s;
-    }
-
-    void invert_element(int ind)
-    {
-        if (m_data[ind] == 0)
-        {
-            throw std::underflow_error("you will get +-inf element\n");
-        }
-        m_data[ind] = 1 / m_data[ind];
-    }
 };
 
 
@@ -189,4 +145,45 @@ selfVector<any>& operator + (selfVector<any>& a, selfVector<any>& b)
         tmp++;
     }
     return a;
+}
+
+template <typename T>
+class Stack : public selfVector<T>
+{
+public:
+    void push(T val)
+    {
+        this->push_back(val);
+    }
+
+    T top()
+    {
+        return (*this)[this->size() - 1];
+    }
+
+    void pop()
+    {
+        this->resize(this->size() - 1);
+    }
+
+    bool empty()
+    {
+        return this->size() == 0;
+    }
+
+};
+
+int main()
+{
+    selfVector<std::string> f;
+    for (int i = 0; i < 4; ++i)
+    {
+        int tmp = 0;
+        std::cin >> tmp;
+        f.push_back(tmp);
+    }
+    for (int i = 0; i < 4; ++i)
+    {
+        std::cout << f[i] << " ";
+    }
 }

@@ -26,7 +26,7 @@ struct foo
     {
         delete []data; //A -> data + [] for arrays
     }
-    foo &operator=(foo A) //needs to be updated
+    foo &operator=(foo &A) //needs to be updated
     {
         //swap needs to be defined
         delete []data;
@@ -40,16 +40,16 @@ struct foo
 
         return *this;
     }
-
-    foo F(foo A, int k)
-    {
-        //...
-    }
 };
 
 int main()
 {
     setlocale(LC_ALL, "Russian");
-    std::cout << "Hello, World!" << std::endl;
+    foo a(3);
+    a.data[0] = 3;
+    foo b = a;
+    std::cout << b.data[0] << std::endl;
+    foo c(b);
+    std::cout << c.data[0];
     return 0;
 }
